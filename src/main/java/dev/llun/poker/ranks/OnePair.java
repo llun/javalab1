@@ -19,13 +19,19 @@ public class OnePair extends BaseRank {
         var valueSet = getHand().getValueCount();
         var otherValueSet = rank.getHand().getValueCount();
 
-        Integer handValue = valueSet.keySet().stream().filter(k -> valueSet.get(k) == 2).collect(Collectors.toList()).get(0);
-        Integer otherHandValue = otherValueSet.keySet().stream().filter(k -> otherValueSet.get(k) == 2).collect(Collectors.toList()).get(0);
-        if (handValue > otherHandValue) return Result.WIN;
-        if (handValue < otherHandValue) return Result.LOSS;
+        Integer handValue = valueSet.keySet().stream().filter(k -> valueSet.get(k) == 2).collect(Collectors.toList())
+                .get(0);
+        Integer otherHandValue = otherValueSet.keySet().stream().filter(k -> otherValueSet.get(k) == 2)
+                .collect(Collectors.toList()).get(0);
+        if (handValue > otherHandValue)
+            return Result.WIN;
+        if (handValue < otherHandValue)
+            return Result.LOSS;
 
-        var theRestOfTheHand = valueSet.keySet().stream().filter(k -> valueSet.get(k) != handValue).collect(Collectors.toList());
-        var theRestOfOtherHand = otherValueSet.keySet().stream().filter(k -> otherValueSet.get(k) != otherHandValue).collect(Collectors.toList());
+        var theRestOfTheHand = valueSet.keySet().stream().filter(k -> valueSet.get(k) != handValue)
+                .collect(Collectors.toList());
+        var theRestOfOtherHand = otherValueSet.keySet().stream().filter(k -> otherValueSet.get(k) != otherHandValue)
+                .collect(Collectors.toList());
         return this.compareHighestHandValue(theRestOfTheHand, theRestOfOtherHand);
     }
 

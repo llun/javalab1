@@ -21,13 +21,17 @@ public class FourOfAKind extends BaseRank {
         var otherHandSet = rank.getHand().getValueCount();
 
         var handValue = handSet.keySet().stream().filter(k -> handSet.get(k) == 4).collect(Collectors.toList()).get(0);
-        var otherHandValue = otherHandSet.keySet().stream().filter(k -> otherHandSet.get(k) == 4).collect(Collectors.toList()).get(0);
+        var otherHandValue = otherHandSet.keySet().stream().filter(k -> otherHandSet.get(k) == 4)
+                .collect(Collectors.toList()).get(0);
 
-        if (handValue > otherHandValue) return Result.WIN;
-        if (handValue < otherHandValue) return Result.LOSS;
+        if (handValue > otherHandValue)
+            return Result.WIN;
+        if (handValue < otherHandValue)
+            return Result.LOSS;
 
         var theRestOfTheHand = handSet.keySet().stream().filter(k -> handSet.get(k) != 4).collect(Collectors.toList());
-        var theRestOfOtherHand = otherHandSet.keySet().stream().filter(k -> otherHandSet.get(k) != 4).collect(Collectors.toList());
+        var theRestOfOtherHand = otherHandSet.keySet().stream().filter(k -> otherHandSet.get(k) != 4)
+                .collect(Collectors.toList());
         return this.compareHighestHandValue(theRestOfTheHand, theRestOfOtherHand);
     }
 

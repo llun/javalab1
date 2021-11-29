@@ -17,11 +17,12 @@ public class Straight extends BaseRank {
         var result = cards.stream().map(Card::value).collect(
                 ArrayList<Integer[]>::new,
                 (list, value) -> {
-                    if (list.size() == 0) list.add(new Integer[]{value, 1});
-                    else list.add(new Integer[]{value, value - list.get(list.size() - 1)[0]});
+                    if (list.size() == 0)
+                        list.add(new Integer[] { value, 1 });
+                    else
+                        list.add(new Integer[] { value, value - list.get(list.size() - 1)[0] });
                 },
-                ArrayList::addAll
-        );
+                ArrayList::addAll);
         return result.stream().map(record -> record[1]).allMatch(diff -> diff == 1);
     }
 
@@ -29,7 +30,8 @@ public class Straight extends BaseRank {
     public Result equalRankCompare(Rank rank) {
         var cards = getHand().getCards();
         var otherCards = rank.getHand().getCards();
-        return compareHighestHandValue(cards.stream().map(Card::value).collect(Collectors.toList()), otherCards.stream().map(Card::value).collect(Collectors.toList()));
+        return compareHighestHandValue(cards.stream().map(Card::value).collect(Collectors.toList()),
+                otherCards.stream().map(Card::value).collect(Collectors.toList()));
     }
 
     @Override

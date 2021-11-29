@@ -17,8 +17,10 @@ public abstract class BaseRank implements Rank {
     }
 
     public Result compare(Rank rank) {
-        if (value() > rank.value()) return Result.WIN;
-        if (value() < rank.value()) return Result.LOSS;
+        if (value() > rank.value())
+            return Result.WIN;
+        if (value() < rank.value())
+            return Result.LOSS;
         return equalRankCompare(rank);
     }
 
@@ -26,8 +28,10 @@ public abstract class BaseRank implements Rank {
 
     Result compareHighestHandValue(List<Integer> cards1, List<Integer> cards2) {
         for (int i = cards1.size() - 1; i >= 0; i--) {
-            if (cards1.get(i) > cards2.get(i)) return Result.WIN;
-            else if (cards1.get(i) < cards2.get(i)) return Result.LOSS;
+            if (cards1.get(i) > cards2.get(i))
+                return Result.WIN;
+            else if (cards1.get(i) < cards2.get(i))
+                return Result.LOSS;
         }
         return Result.TIE;
     }

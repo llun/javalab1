@@ -14,8 +14,10 @@ public class Hand {
         cards.sort(Comparator.comparingInt(Card::value));
 
         valueCount = cards.stream().mapToInt(Card::value).collect(HashMap::new, (map, value) -> {
-            if (map.containsKey(value)) map.put(value, map.get(value) + 1);
-            else map.put(value, 1);
+            if (map.containsKey(value))
+                map.put(value, map.get(value) + 1);
+            else
+                map.put(value, 1);
         }, HashMap::putAll);
     }
 

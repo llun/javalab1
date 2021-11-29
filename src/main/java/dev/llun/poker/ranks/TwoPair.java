@@ -20,13 +20,16 @@ public class TwoPair extends BaseRank {
         var otherHandValues = rank.getHand().getValueCount();
 
         var handPairs = handValues.keySet().stream().filter(k -> handValues.get(k) == 2).collect(Collectors.toList());
-        var otherHandPairs = otherHandValues.keySet().stream().filter(k -> otherHandValues.get(k) == 2).collect(Collectors.toList());
+        var otherHandPairs = otherHandValues.keySet().stream().filter(k -> otherHandValues.get(k) == 2)
+                .collect(Collectors.toList());
 
         var pairResult = compareHighestHandValue(handPairs, otherHandPairs);
-        if (pairResult != Result.TIE) return pairResult;
+        if (pairResult != Result.TIE)
+            return pairResult;
 
         var handNonPair = handValues.keySet().stream().filter(k -> handValues.get(k) == 1).collect(Collectors.toList());
-        var otherHandNonPair = otherHandValues.keySet().stream().filter(k -> otherHandValues.get(k) == 1).collect(Collectors.toList());
+        var otherHandNonPair = otherHandValues.keySet().stream().filter(k -> otherHandValues.get(k) == 1)
+                .collect(Collectors.toList());
         return compareHighestHandValue(handNonPair, otherHandNonPair);
     }
 

@@ -20,7 +20,8 @@ public class Flush extends BaseRank {
     Result equalRankCompare(Rank rank) {
         var cards = getHand().getCards();
         var otherCards = rank.getHand().getCards();
-        return compareHighestHandValue(cards.stream().map(Card::value).collect(Collectors.toList()), otherCards.stream().map(Card::value).collect(Collectors.toList()));
+        return compareHighestHandValue(cards.stream().map(Card::value).collect(Collectors.toList()),
+                otherCards.stream().map(Card::value).collect(Collectors.toList()));
     }
 
     @Override

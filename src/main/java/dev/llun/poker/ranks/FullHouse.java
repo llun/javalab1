@@ -9,7 +9,8 @@ public class FullHouse extends ThreeOfAKind {
 
     public static Boolean isFullHouse(Hand hand) {
         var handValues = hand.getValueCount().values();
-        return handValues.stream().filter(i -> i == 3).count() == 1 && handValues.stream().filter(i -> i == 2).count() == 1;
+        return handValues.stream().filter(i -> i == 3).count() == 1
+                && handValues.stream().filter(i -> i == 2).count() == 1;
     }
 
     @Override

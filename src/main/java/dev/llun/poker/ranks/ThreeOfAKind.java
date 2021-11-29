@@ -20,13 +20,17 @@ public class ThreeOfAKind extends BaseRank {
         var otherSet = rank.getHand().getValueCount();
 
         var handValue = handSet.keySet().stream().filter(k -> handSet.get(k) == 3).collect(Collectors.toList()).get(0);
-        var otherHandValue = otherSet.keySet().stream().filter(k -> otherSet.get(k) == 3).collect(Collectors.toList()).get(0);
+        var otherHandValue = otherSet.keySet().stream().filter(k -> otherSet.get(k) == 3).collect(Collectors.toList())
+                .get(0);
 
-        if (handValue > otherHandValue) return Result.WIN;
-        if (handValue < otherHandValue) return Result.LOSS;
+        if (handValue > otherHandValue)
+            return Result.WIN;
+        if (handValue < otherHandValue)
+            return Result.LOSS;
 
         var theRestOfTheHand = handSet.keySet().stream().filter(k -> handSet.get(k) != 3).collect(Collectors.toList());
-        var theRestOfOtherHand = otherSet.keySet().stream().filter(k -> otherSet.get(k) != 3).collect(Collectors.toList());
+        var theRestOfOtherHand = otherSet.keySet().stream().filter(k -> otherSet.get(k) != 3)
+                .collect(Collectors.toList());
         return this.compareHighestHandValue(theRestOfTheHand, theRestOfOtherHand);
     }
 
